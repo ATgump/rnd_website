@@ -1,0 +1,3 @@
+{% for obj in object_list %}
+<h1>{{ obj.id }}.<a href="{{ obj.get_absolute_url }}">{{ obj.event_name }}</a></h1>
+{% endfor %}

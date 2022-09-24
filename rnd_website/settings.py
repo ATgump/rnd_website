@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'Profiles',
     'FileUpload',
     'Presentations',
+    'CalendarApp',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR,"Projects","templates"),
             os.path.join(BASE_DIR,"FileUoload","templates"),
             os.path.join(BASE_DIR,"Presentations","templates"),
+            os.path.join(BASE_DIR,"CalendarApp","templates"),
         
         
         ],
@@ -143,6 +145,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=[
     BASE_DIR / "static",
     BASE_DIR / "Presentations/static",
+    BASE_DIR / "CalendarApp/static"
 
 ]
 

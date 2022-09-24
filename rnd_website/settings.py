@@ -75,7 +75,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR,"EntryPage","templates"),
             os.path.join(BASE_DIR,"Profiles","templates"),
             os.path.join(BASE_DIR,"Projects","templates"),
-            os.path.join(BASE_DIR,"FileUoload","templates"),
+            os.path.join(BASE_DIR,"FileUpload","templates"),
             os.path.join(BASE_DIR,"Presentations","templates"),
             os.path.join(BASE_DIR,"CalendarApp","templates"),
         

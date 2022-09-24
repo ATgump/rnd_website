@@ -19,14 +19,16 @@ from django.urls import path
 
 
 ### will import views later 
-from .views import single_event_view,list_event_view,ClassBasedListEventView,ClassBasedSingleEventView
+from .views import single_event_view,list_event_view,ClassBasedListEventView,ClassBasedSingleEventView,event_creation_view,event_home_view
 
 
 
 app_name = 'CalendarApp'
 urlpatterns = [
 #path("event/<slug:somestringnamehere>/",ClassBasedSingleEventView.as_view(),name='single-event-view'),
+path("",event_home_view,name="home-view"),
 path("event-list/",ClassBasedListEventView.as_view(),name="list-event-view"),
 path("event/<str:somestringnamehere>/",single_event_view,name='single-event-view'),
+path("eventcreate/",event_creation_view,name="create-event-view"),
 # path("event-list/",list_event_view,name="list-event-view"),
 ]

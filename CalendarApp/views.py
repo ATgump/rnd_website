@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import CalendarEvent
 from django.views.generic import (
     CreateView,
@@ -7,6 +7,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from .forms import CalendarEventForm
 # Create your views here.
 
 
@@ -31,8 +32,20 @@ class ClassBasedListEventView(ListView):
     #     return super().get_queryset().filter(hos)
 
 
+def event_creation_view(request):
+    form = CalendarEventForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect("CalendarApp:home-view")
+    context={
+        'form':form
+    }
+    return render(request,"CalendarApp/create_event.html",context)
 
 
+
+def event_home_view(request):
+    return render(request,"CalendarApp/home.html",{})
 
 def list_event_view(request):
     queryset = CalendarEvent.objects.all()

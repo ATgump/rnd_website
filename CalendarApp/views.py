@@ -1,8 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CalendarEvent
-from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
-                                  DeleteView)
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    DeleteView,
+)
 from .forms import CalendarEventForm
+
 # Create your views here.
 
 
@@ -11,7 +17,7 @@ def single_event_view(request, somestringnamehere):
     context = {
         "event_name": event_obj.event_name,
         "event_creator": event_obj.event_creator,
-        "date": event_obj.date
+        "date": event_obj.date,
     }
     return render(request, "CalendarApp/event_view.html", context)
 
@@ -33,7 +39,7 @@ def event_creation_view(request):
     if form.is_valid():
         form.save()
         return redirect("CalendarApp:home-view")
-    context = {'form': form}
+    context = {"form": form}
     return render(request, "CalendarApp/create_event.html", context)
 
 

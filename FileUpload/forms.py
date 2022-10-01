@@ -3,7 +3,6 @@ from django import forms
 
 
 class CssCreateForm(forms.ModelForm):
-
     class Meta:
         model = Css
-        fields = ['file']
+        fields = ["file"]

@@ -3,11 +3,12 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
 from .models import Profile
 from django.views.generic import UpdateView
+
 # def board_profiles_view(request):
 #     return render(request,"Profiles/BoardProfiles.html",{})
 
 
-@permission_required('Profiles.view_member_directory_view')
+@permission_required("Profiles.view_member_directory_view")
 def member_directory_view(request):
     return render(request, "Profiles/MemberDirectory.html")
 
@@ -29,12 +30,18 @@ def individual_profile_view(request, user):
 
 class UpdateProfile(UpdateView):
     model = User
-    fields = ['first_name', 'last_name', 'image', 'url', 'biography',
-              '...']  # Keep listing whatever fields
+    fields = [
+        "first_name",
+        "last_name",
+        "image",
+        "url",
+        "biography",
+        "...",
+    ]  # Keep listing whatever fields
     # the combined UserProfile and User exposes.
-    template_name = 'Profiles/update_profile.html'
-    slug_field = 'username'
-    slug_url_kwarg = 'slug'
+    template_name = "Profiles/update_profile.html"
+    slug_field = "username"
+    slug_url_kwarg = "slug"
 
 
 # def user_list_dynamic_link(request):

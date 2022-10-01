@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from Profiles.models import Profile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import permission_required, login_required
+
 # def user_login_view(request):
 #     form = UserLoginForm(request.POST or None)
 #     if form.is_valid():
@@ -50,18 +51,19 @@ def user_landing_view(request):
 class UserCreateView(View):
     user_form_class = UserForm
     profile_form_class = ProfileForm
-    #model = User
+    # model = User
     template_name: str = "createuser.html"
-    success_url = reverse_lazy('list')
-    next_page = 'EntryPage:authenticated_user_landing.html'
+    success_url = reverse_lazy("list")
+    next_page = "EntryPage:authenticated_user_landing.html"
 
     def get(self, request):
         user_form = self.user_form_class(None)
         profile_form = self.profile_form_class(None)
-        return render(request, self.template_name, {
-            'user_form': user_form,
-            "profile_form": profile_form
-        })
+        return render(
+            request,
+            self.template_name,
+            {"user_form": user_form, "profile_form": profile_form},
+        )
 
     def post(self, request):
         user_form = self.user_form_class(request.POST)
@@ -71,27 +73,27 @@ class UserCreateView(View):
             user = user_form.save(commit=False)
             user_profile = profile_form.save(commit=False)
 
-            username = user_form.cleaned_data['username']
-            password = user_form.cleaned_data['password']
+            username = user_form.cleaned_data["username"]
+            password = user_form.cleaned_data["password"]
 
             ## profile_field = profile_form.cleaned_data["field"]
             user.set_password(password)
             user.profile = user_profile
             user.save()
 
-            #default=1 no need to set,but this should be how to save
-            #user.profile.save(role=Profile.MEMBER)
-            #user.profile.save(FIELDNAME=profile_field)
+            # default=1 no need to set,but this should be how to save
+            # user.profile.save(role=Profile.MEMBER)
+            # user.profile.save(FIELDNAME=profile_field)
             user.groups.add(1)
 
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                return HttpResponseRedirect(
-                    reverse('EntryPage:authenticated_homepage'))
+                return HttpResponseRedirect(reverse("EntryPage:authenticated_homepage"))
 
-        return render(request, self.template_name, {
-            'user_form': user_form,
-            'profile_form': profile_form
-        })
+        return render(
+            request,
+            self.template_name,
+            {"user_form": user_form, "profile_form": profile_form},
+        )

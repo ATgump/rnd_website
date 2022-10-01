@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from django.template.defaultfilters import filesizeformat
+
 # from django.core.exceptions import ValidationError
 
 
@@ -9,10 +10,9 @@ def mb(n):
 
 
 class FileField(models.FileField):
-
     def __init__(self, *args, **kwargs):
         ##self.content_types = kwargs.pop('content_types', [])
-        self.max_upload_size = kwargs.pop('max_upload_size', [])
+        self.max_upload_size = kwargs.pop("max_upload_size", [])
         super(FileField, self).__init__(*args, **kwargs)
 
     def clean(self, *args, **kwargs):
@@ -23,10 +23,11 @@ class FileField(models.FileField):
 
             if file.size > self.max_upload_size:
                 raise forms.ValidationError(
-                    'Please keep filesize under {}. Current filesize {}'.
-                    format(filesizeformat(self.max_upload_size),
-                           filesizeformat(file.size)),
-                    code="invalid")
+                    "Please keep filesize under {}. Current filesize {}".format(
+                        filesizeformat(self.max_upload_size), filesizeformat(file.size)
+                    ),
+                    code="invalid",
+                )
         except AttributeError:
             pass
         return data

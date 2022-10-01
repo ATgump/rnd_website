@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
-                                  DeleteView)
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    DeleteView,
+)
 from .models import Article
 
 # def blog_home_view(request):

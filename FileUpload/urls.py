@@ -18,8 +18,8 @@ from django.urls import path
 
 from .views import cssUploadView, uploadSuccessView
 
-app_name = 'FileUpload'
+app_name = "FileUpload"
 urlpatterns = [
     path("css/", cssUploadView, name="css-upload"),
-    path("uploadsuccess/", uploadSuccessView, name="success")
+    path("uploadsuccess/", uploadSuccessView, name="success"),
 ]

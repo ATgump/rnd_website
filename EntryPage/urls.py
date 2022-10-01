@@ -16,14 +16,15 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import UserCreateView,user_entry_view,UserLoginView,user_landing_view,UserLogoutView
+from .views import UserCreateView, user_entry_view, UserLoginView, user_landing_view, UserLogoutView
+
 app_name = 'EntryPage'
 urlpatterns = [
-    path("",user_entry_view,name="entry_view"),
-    path("logout-redirect/",UserLogoutView.as_view(),name="logout"),
-    path("register/",UserCreateView.as_view(),name="user_create_view"),
-    path("login/",UserLoginView.as_view(),name="login"),
-    path("memberhome/",user_landing_view,name="authenticated_homepage")
+    path("", user_entry_view, name="entry_view"),
+    path("logout-redirect/", UserLogoutView.as_view(), name="logout"),
+    path("register/", UserCreateView.as_view(), name="user_create_view"),
+    path("login/", UserLoginView.as_view(), name="login"),
+    path("memberhome/", user_landing_view, name="authenticated_homepage")
     #path("login/",User)
     #path('',user_profile_detail_view,name="user_profile"),
     #path('home/',home_view,name="home"),

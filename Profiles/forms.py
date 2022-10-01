@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 
+
 class UserUpdateForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(render_value=True), required=True)
-    password_confirmation = forms.CharField(widget=forms.PasswordInput(render_value=True), required=True)
+    password = forms.CharField(widget=forms.PasswordInput(render_value=True),
+                               required=True)
+    password_confirmation = forms.CharField(
+        widget=forms.PasswordInput(render_value=True), required=True)
 
     class Meta:
         model = User
@@ -21,5 +24,4 @@ class UserUpdateForm(forms.ModelForm):
             self.add_error('password', "Must match with Password confirmation")
             self.add_error('password_confirmation', "Must match with Password")
             raise forms.ValidationError(
-                "Password and Password confirmation do not match"
-            )
+                "Password and Password confirmation do not match")

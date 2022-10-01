@@ -1,5 +1,5 @@
 from django.db import models
-from .fields import mb,FileField
+from .fields import mb, FileField
 from .validators import validate_file_extension
 # Create your models here.
 
@@ -12,11 +12,12 @@ from .validators import validate_file_extension
 
 ##Switch to All Files with no Type Checking
 
+
 class Css(models.Model):
     file = FileField(
-        upload_to='css/', 
+        upload_to='css/',
         #content_types=['text/css','text/plain'],
-        validators = [validate_file_extension],
+        validators=[validate_file_extension],
         max_upload_size=mb(5),
         blank=True,
         null=True,

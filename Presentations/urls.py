@@ -16,13 +16,15 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import presentations_home_view,individual_presentation_view,make_presentation_view
+from .views import presentations_home_view, individual_presentation_view, make_presentation_view
+
 app_name = 'Presentations'
 urlpatterns = [
-#    path("css/",cssUploadView,name="css-upload"),
-#    path("uploadsuccess/",uploadSuccessView,name="success")
-    path("",presentations_home_view,name="presentations-home"),
-    path("create/",make_presentation_view,name="make-presentation"),
-    path("<presentation_name>/",individual_presentation_view,name="presentation-single"),
-    
+    #    path("css/",cssUploadView,name="css-upload"),
+    #    path("uploadsuccess/",uploadSuccessView,name="success")
+    path("", presentations_home_view, name="presentations-home"),
+    path("create/", make_presentation_view, name="make-presentation"),
+    path("<presentation_name>/",
+         individual_presentation_view,
+         name="presentation-single"),
 ]

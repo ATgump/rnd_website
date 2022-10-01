@@ -17,7 +17,6 @@ Including another URLconf
 from django.urls import path
 
 from .views import project_home_view
+
 app_name = 'Projects'
-urlpatterns = [
-   path("",project_home_view,name="project_home")
-]
+urlpatterns = [path("", project_home_view, name="project_home")]

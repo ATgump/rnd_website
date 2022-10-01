@@ -16,13 +16,14 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import board_profiles_view,member_directory_view,individual_profile_view,UpdateProfile
+from .views import board_profiles_view, member_directory_view, individual_profile_view, UpdateProfile
+
 app_name = 'Profiles'
 urlpatterns = [
-    path("board/",board_profiles_view,name="board_view"),
-    path("",member_directory_view,name="member_directory_view"),
-    path("<user>/",individual_profile_view,name="memberProfile"),
-    path("<user>/edit",UpdateProfile.as_view(),name="edit_profile")
+    path("board/", board_profiles_view, name="board_view"),
+    path("", member_directory_view, name="member_directory_view"),
+    path("<user>/", individual_profile_view, name="memberProfile"),
+    path("<user>/edit", UpdateProfile.as_view(), name="edit_profile")
     # path("",user_entry_view,name="entry_view"),
     # path("register/",UserCreateView.as_view(),name="user_create_view"),
     # path("login/",UserLoginView.as_view(),name="login"),

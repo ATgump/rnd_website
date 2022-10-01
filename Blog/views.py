@@ -1,14 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import (
-    CreateView,
-    DetailView,
-    ListView,
-    UpdateView,
-    DeleteView
-)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
+                                  DeleteView)
 from .models import Article
-
-
 
 # def blog_home_view(request):
 #     queryset = Article.objects.all()
@@ -23,13 +16,13 @@ class ArticleListView(ListView):
     queryset = Article.objects.all()
 
 
-
 # def blog_article_view(request,id):
 #     obj = get_object_or_404(Article,id=id)
 #     context = {
 #         "obj":obj
 #     }
 #     return render(request,"Article/article_detail.html",context=context)
+
 
 class ArticleDetailView(DetailView):
     template_name: str = "Article/article_detail.html"

@@ -16,9 +16,10 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import ArticleListView,ArticleDetailView
+from .views import ArticleListView, ArticleDetailView
+
 app_name = 'Blog'
 urlpatterns = [
-    path('',ArticleListView.as_view(),name="blog_home"),
-    path('<int:pk>/',ArticleDetailView.as_view(),name="blog_article")
+    path('', ArticleListView.as_view(), name="blog_home"),
+    path('<int:pk>/', ArticleDetailView.as_view(), name="blog_article")
 ]
